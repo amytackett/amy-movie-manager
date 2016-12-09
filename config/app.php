@@ -155,8 +155,6 @@ return [
         App\Providers\AuthServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        
-        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
 
     ],
 
@@ -205,5 +203,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+    
+    'title' => "Amy's Movie Manager",
 
 ];
