@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Laravel</title>
+        <title>@yield('title', config('adminlte.title'))</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -31,14 +31,19 @@
             }
 
             .title {
-                font-size: 96px;
+                font-size: 36px;
+            }
+            
+            img {
+                max-width: 600px;
             }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Laravel 5</div>
+                <div class="title">@yield('title', config('adminlte.title'))</div>
+                <div><a href="/movies"><img src="https://www.publicdomainpictures.net/pictures/20000/velka/shegoat.jpg#.WEr5OmYT6hw.link" /></a></div>
             </div>
         </div>
     </body>
