@@ -13,8 +13,8 @@
 
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="/movies">Movies</a></li>
+            <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
+            <li><a href="/movies"><i class="fa fa-play"></i> Movies</a></li>
           </ul>
         </div>
         <!--<div class="navbar-custom-menu">

@@ -41,11 +41,11 @@ class MovieController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'format' => 'required',
-            'length' => 'required',
-            'year' => 'required',
-            'rating' => 'required',
+            'title' => 'required|unique:movies|between:1,50',
+            'format' => 'required|in:VHS,DVD,Streaming',
+            'length' => 'required|integer|min:1|max:499',
+            'year' => 'required|integer|min:1801|max:2099',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         Movie::create($request->all());
@@ -87,11 +87,11 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
-            'format' => 'required',
-            'length' => 'required',
-            'year' => 'required',
-            'rating' => 'required',
+            'title' => 'required|unique:movies|between:1,50',
+            'format' => 'required|in:VHS,DVD,Streaming',
+            'length' => 'required|integer|min:1|max:499',
+            'year' => 'required|integer|min:1801|max:2099',
+            'rating' => 'required|integer|min:1|max:5',
         ]);
 
         Movie::find($id)->update($request->all());

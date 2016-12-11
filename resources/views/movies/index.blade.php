@@ -17,7 +17,7 @@
     
     <div class="box">
         <div class="box-body">
-            <table id="example" class="table table-bordered table-striped">
+            <table id="movieList" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th>Title</th>
@@ -30,9 +30,9 @@
                 <tbody>
                     @foreach ($movies as $key => $movie)
                     <tr>
-                        <td>{{ $movie->title }}</td>
+                        <td>{{ $movie->title }} <a href="{{ route('movies.show',$movie->id) }}"><i class="fa fa-info-circle"></i></a></td>
                         <td>{{ $movie->format }}</td>
-                        <td>{{ $movie->length }}</td>
+                        <td>{{ lengthFormat($movie->length) }}</td>
                         <td>{{ $movie->year }}</td>
                         <td>{{ $movie->rating }}</td>
                     </tr>
