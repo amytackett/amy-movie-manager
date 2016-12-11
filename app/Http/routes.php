@@ -15,6 +15,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('movies', function () {
-    return view('movies');
-});
+Route::resource('movies', 'MovieController');
