@@ -2,15 +2,28 @@
 
 @section('subtitle', '- Movies')
 
-@section('header', 'Movies')
-
 @section('customjs')
     <script src="{{ secure_asset ("/js/movies.js") }}" type="text/javascript"></script>
 @stop
 
 @section('content')
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Movies</h2>
+            </div>
+            <div class="pull-right">
+                <a class="btn btn-primary" href="{{ route('movies.create') }}"> <i class="fa fa-plus"></i> Add Movie</a>
+            </div>
+        </div>
+    </div>
+    
     @if ($message = Session::get('success'))
         <div class="alert alert-success alert-dismissible">
+            <p>{{ $message }}</p>
+        </div>
+    @elseif ($message = Session::get('failure'))
+        <div class="alert alert-danger alert-dismissible">
             <p>{{ $message }}</p>
         </div>
     @endif
@@ -30,7 +43,10 @@
                 <tbody>
                     @foreach ($movies as $key => $movie)
                     <tr>
-                        <td>{{ $movie->title }} <a href="{{ route('movies.show',$movie->id) }}"><i class="fa fa-info-circle"></i></a></td>
+                        <td>
+                            {{ $movie->title }}&nbsp;
+                            <a href="{{ route('movies.show',$movie->id) }}"><i class="fa fa-info-circle"></i></a>&nbsp;
+                        </td>
                         <td>{{ $movie->format }}</td>
                         <td>{{ lengthFormat($movie->length) }}</td>
                         <td>{{ $movie->year }}</td>

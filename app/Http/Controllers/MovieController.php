@@ -87,7 +87,7 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required|unique:movies|between:1,50',
+            'title' => 'required|between:1,50',
             'format' => 'required|in:VHS,DVD,Streaming',
             'length' => 'required|integer|min:1|max:499',
             'year' => 'required|integer|min:1801|max:2099',
@@ -95,7 +95,7 @@ class MovieController extends Controller
         ]);
 
         Movie::find($id)->update($request->all());
-        return redirect()->route('movies.index')
+        return redirect()->route('movies.show', ['id' => $id])
                         ->with('success','Item updated successfully');
     }
 
@@ -107,6 +107,10 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
+        if ($id < 7) {
+            return redirect()->route('movies.show', ['id' => $id])
+                        ->with('failure','As this movie pertains to goats, sheep, or a llama named Tina, it accordingly is unable to be deleted.');
+        }
         Movie::find($id)->delete();
         return redirect()->route('movies.index')
                         ->with('success','Item deleted successfully');
