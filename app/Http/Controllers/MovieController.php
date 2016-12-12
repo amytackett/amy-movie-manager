@@ -107,7 +107,9 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        if ($id < 7) {
+        $nonDeletable = array('The Men Who Stare at Goats','Goats','Heidi','The Hunchback of Notre Dame','Napoleon Dynamite','Sense and Sensibility');
+        $movie = Movie::find($id);
+        if (in_array($movie->title,$nonDeletable)) {
             return redirect()->route('movies.show', ['id' => $id])
                         ->with('failure','As this movie pertains to goats, sheep, or a llama named Tina, it accordingly is unable to be deleted.');
         }
